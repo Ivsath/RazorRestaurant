@@ -37,15 +37,23 @@ namespace RazorRestaurant.Pages.Restaurants
 
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                Cuisines = _htmlHelper.GetEnumSelectList<CuisineType>();
+                return Page();
+            }
+
+            if (Restaurant.Id > 0)
             {
                 _restaurantData.Update(Restaurant);
-                _restaurantData.Commit();
-                return RedirectToPage("./Detail", new { restaurantId = Restaurant.Id });
             }
-            Cuisines = _htmlHelper.GetEnumSelectList<CuisineType>();
+            else
+            {
+                _restaurantData.Create(Restaurant);
+            }
+            _restaurantData.Commit();
 
-            return Page();
+            return RedirectToPage("./Detail", new {restaurantId = Restaurant.Id});
         }
     }
 }
