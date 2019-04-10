@@ -14,8 +14,8 @@ namespace RazorRestaurant.Data
             _restaurants = new List<Restaurant>()
             {
                 new Restaurant { Id = 1, Name = "Giovanni's Pizza", Location = "Mexico City", Cuisine = CuisineType.Italian },
-                new Restaurant { Id = 1, Name = "Irvins", Location = "Austin, TX", Cuisine = CuisineType.Mexican },
-                new Restaurant { Id = 1, Name = "Boggs home", Location = "Peru", Cuisine = CuisineType.Indian }
+                new Restaurant { Id = 2, Name = "Irvins", Location = "Austin, TX", Cuisine = CuisineType.Mexican },
+                new Restaurant { Id = 3, Name = "Boggs home", Location = "Peru", Cuisine = CuisineType.Indian }
             };
         }
 
@@ -25,6 +25,11 @@ namespace RazorRestaurant.Data
                 where string.IsNullOrEmpty(name) || r.Name.StartsWith(name, StringComparison.OrdinalIgnoreCase)
                 orderby r.Name
                 select r;
+        }
+
+        public Restaurant GetById(int id)
+        {
+            return _restaurants.SingleOrDefault(r => r.Id == id);
         }
     }
 }
