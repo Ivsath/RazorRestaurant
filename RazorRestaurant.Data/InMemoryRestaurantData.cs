@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using RazorRestaurant.Core;
@@ -18,9 +19,12 @@ namespace RazorRestaurant.Data
             };
         }
 
-        public IEnumerable<Restaurant> GetAll()
+        public IEnumerable<Restaurant> GetRestaurantsByName(string name = null)
         {
-            return from r in _restaurants orderby r.Name select r;
+            return from r in _restaurants
+                where string.IsNullOrEmpty(name) || r.Name.StartsWith(name, StringComparison.OrdinalIgnoreCase)
+                orderby r.Name
+                select r;
         }
     }
 }

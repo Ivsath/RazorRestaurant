@@ -7,6 +7,19 @@
 
 <h1>Restaurants</h1>
 
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" asp-for="SearchTerm" autofocus />
+            <span class="input-group-append">
+                <button class="btn btn-primary">
+                    Search
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+
 <table class="table">
     @foreach(var restaurant in Model.Restaurants)
     {
