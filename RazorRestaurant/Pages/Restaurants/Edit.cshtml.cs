@@ -52,7 +52,8 @@ namespace RazorRestaurant.Pages.Restaurants
                 _restaurantData.Create(Restaurant);
             }
             _restaurantData.Commit();
-
+            TempData["Message"] = "Restaurant saved!";
+            
             return RedirectToPage("./Detail", new {restaurantId = Restaurant.Id});
         }
     }
