@@ -15,7 +15,7 @@ namespace RazorRestaurant.Data
             {
                 new Restaurant { Id = 1, Name = "Giovanni's Pizza", Location = "Mexico City", Cuisine = CuisineType.Italian },
                 new Restaurant { Id = 2, Name = "Irvins", Location = "Austin, TX", Cuisine = CuisineType.Mexican },
-                new Restaurant { Id = 3, Name = "Boggs home", Location = "Peru", Cuisine = CuisineType.Indian }
+                new Restaurant { Id = 3, Name = "Bogg's Chicken", Location = "Peru", Cuisine = CuisineType.Indian }
             };
         }
 
@@ -30,6 +30,24 @@ namespace RazorRestaurant.Data
         public Restaurant GetById(int id)
         {
             return _restaurants.SingleOrDefault(r => r.Id == id);
+        }
+
+        public Restaurant Update(Restaurant updatedRestaurant)
+        {
+            var restaurant = _restaurants.SingleOrDefault(r => r.Id == updatedRestaurant.Id);
+            if (restaurant != null)
+            {
+                restaurant.Name = updatedRestaurant.Name;
+                restaurant.Location = updatedRestaurant.Location;
+                restaurant.Cuisine = updatedRestaurant.Cuisine;
+            }
+
+            return restaurant;
+        }
+
+        public int Commit()
+        {
+            return 0;
         }
     }
 }

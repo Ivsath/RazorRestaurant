@@ -22,6 +22,7 @@ namespace RazorRestaurant.Pages.Restaurants
             {
                 return RedirectToPage("./NotFound");
             }
+
             return Page();
         }
     }
