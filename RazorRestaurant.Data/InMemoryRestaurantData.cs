@@ -45,6 +45,13 @@ namespace RazorRestaurant.Data
             return restaurant;
         }
 
+        public Restaurant Create(Restaurant newRestaurant)
+        {
+            newRestaurant.Id = _restaurants.Max(r => r.Id) + 1;
+            _restaurants.Add(newRestaurant);
+            return newRestaurant;
+        }
+
         public int Commit()
         {
             return 0;

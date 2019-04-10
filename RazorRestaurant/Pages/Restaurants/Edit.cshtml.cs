@@ -22,10 +22,11 @@ namespace RazorRestaurant.Pages.Restaurants
             _htmlHelper = htmlHelper;
         }
         
-        public IActionResult OnGet(int restaurantId)
+        public IActionResult OnGet(int? restaurantId)
         {
             Cuisines = _htmlHelper.GetEnumSelectList<CuisineType>();
-            Restaurant = _restaurantData.GetById(restaurantId);
+            Restaurant = restaurantId.HasValue ? _restaurantData.GetById(restaurantId.Value) : new Restaurant();
+            
             if (Restaurant == null)
             {
                 return RedirectToPage("./NotFound");
@@ -40,6 +41,7 @@ namespace RazorRestaurant.Pages.Restaurants
             {
                 _restaurantData.Update(Restaurant);
                 _restaurantData.Commit();
+                return RedirectToPage("./Detail", new { restaurantId = Restaurant.Id });
             }
             Cuisines = _htmlHelper.GetEnumSelectList<CuisineType>();
 
