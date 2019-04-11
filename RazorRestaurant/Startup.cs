@@ -28,8 +28,7 @@ namespace RazorRestaurant
         {
             services.AddDbContextPool<RazorRestaurantDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RazorRestaurantDb")));
 
-            // Just for development
-            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            services.AddScoped<IRestaurantData, SqlRestaurantData>();
             
             services.Configure<CookiePolicyOptions>(options =>
             {
