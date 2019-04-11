@@ -52,6 +52,16 @@ namespace RazorRestaurant.Data
             return newRestaurant;
         }
 
+        public Restaurant Delete(int id)
+        {
+            var restaurant = _restaurants.FirstOrDefault(r => r.Id == id);
+            if (restaurant != null)
+            {
+                _restaurants.Remove(restaurant);
+            }
+            return restaurant;
+        }
+
         public int Commit()
         {
             return 0;
