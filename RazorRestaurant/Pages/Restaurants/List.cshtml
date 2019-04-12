@@ -34,9 +34,17 @@
                 <a class="btn btn-info" asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
                     Edit
                 </a>
+                <a class="btn btn-info" asp-page="./Delete" asp-route-restaurantId="@restaurant.Id">
+                    Delete
+                </a>
             </td>
         </tr>
     }
 </table>
+
+@if (Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
 
 <a asp-page="./Edit" class="btn btn-primary">Add New</a>
