@@ -17,4 +17,9 @@
       <ProjectReference Include="..\RazorRestaurant.Data\RazorRestaurant.Data.csproj" />
     </ItemGroup>
 
+
+    <ItemGroup>
+      <Folder Include="wwwroot\images" />
+    </ItemGroup>
+
 </Project>
