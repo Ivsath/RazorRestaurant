@@ -15,6 +15,11 @@ namespace RazorRestaurant.Data
             _db = db;
         }
 
+        public int GetCountOfRestaurants()
+        {
+            return _db.Restaurants.Count();
+        }
+
         public int Commit()
         {
             return _db.SaveChanges();
