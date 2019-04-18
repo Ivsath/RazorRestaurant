@@ -26,7 +26,9 @@ namespace RazorRestaurant
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<RazorRestaurantDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RazorRestaurantDb")));
+            services.AddEntityFrameworkNpgsql();
+
+            services.AddDbContextPool<RazorRestaurantDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("RazorRestaurantDb")));
 
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
             

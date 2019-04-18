@@ -11,6 +11,9 @@ namespace RazorRestaurant.Pages.Restaurants
     {
         private readonly IRestaurantData _restaurantData;
         public IEnumerable<Restaurant> Restaurants { get; set; }
+        
+        [TempData]
+        public string Message { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }

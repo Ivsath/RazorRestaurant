@@ -10,6 +10,7 @@ namespace RazorRestaurant.Data
         Restaurant Update(Restaurant updatedRestaurant);
         Restaurant Create(Restaurant newRestaurant);
         Restaurant Delete(int id);
+        int GetCountOfRestaurants();
         int Commit();
     }
 }
