@@ -30,3 +30,4 @@ msbuild.wrn
 
 .vs/
 .idea/
+node_modules/
